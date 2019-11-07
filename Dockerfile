@@ -11,17 +11,17 @@ RUN curl -L https://github.com/strukturag/libde265/releases/download/v1.0.3/libd
   && make \
   && make install
 
-RUN curl -L https://github.com/strukturag/libheif/releases/download/v1.3.2/libheif-1.3.2.tar.gz | tar zx \
-  && cd libheif-1.3.2 \
+RUN curl -L https://github.com/strukturag/libheif/releases/download/v1.5.1/libheif-1.5.1.tar.gz | tar zx \
+  && cd libheif-1.5.1 \
   && ./autogen.sh \
   && ./configure \
   && make \
   && make install
 
 RUN cd /usr/src/ \
-  && wget https://imagemagick.org/download/releases/ImageMagick-7.0.8-53.tar.gz \
-  && tar xf ImageMagick-7.0.8-53.tar.gz \
-  && cd ImageMagick-7* \
+  && wget https://imagemagick.org/download/releases/ImageMagick-6.9.10-71.tar.gz \
+  && tar xf ImageMagick-6.9.10-71.tar.gz \
+  && cd ImageMagick-6.9.10-71 \
   && ./configure --with-heic=yes --prefix=/usr/src/imagemagick \
   && make \
   && make install

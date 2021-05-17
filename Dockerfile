@@ -4,29 +4,29 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
   libheif-dev libjpeg-dev libpng-dev libtiff-dev libgif-dev
 
-RUN curl -L https://github.com/strukturag/libde265/releases/download/v1.0.5/libde265-1.0.5.tar.gz | tar zx \
-  && cd libde265-1.0.5 \
+RUN curl -L https://github.com/strukturag/libde265/releases/download/v1.0.8/libde265-1.0.8.tar.gz | tar zx \
+  && cd libde265-1.0.8 \
   && ./autogen.sh \
   && ./configure \
   && make \
   && make install
 
-RUN curl -L https://github.com/strukturag/libheif/releases/download/v1.6.2/libheif-1.6.2.tar.gz | tar zx \
-  && cd libheif-1.6.2 \
+RUN curl -L https://github.com/strukturag/libheif/releases/download/v1.12.0/libheif-1.12.0.tar.gz | tar zx \
+  && cd libheif-1.12.0 \
   && ./autogen.sh \
   && ./configure \
   && make \
   && make install
 
-RUN curl -L http://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.1.0.tar.gz | tar zx \
-  && cd libwebp-1.1.0 \
+RUN curl -L http://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.2.0.tar.gz | tar zx \
+  && cd libwebp-1.2.0 \
   && ./configure \
   && make \
   && make install
 
 RUN cd /usr/src/ \
-  && wget https://imagemagick.org/download/releases/ImageMagick-7.0.10-9.tar.gz \
-  && tar xf ImageMagick-7.0.10-9.tar.gz \
+  && wget https://imagemagick.org/download/releases/ImageMagick-7.0.11-12.tar.gz \
+  && tar xf ImageMagick-7.0.11-12.tar.gz \
   && cd ImageMagick-7* \
   && ./configure --with-heic=yes --prefix=/usr/src/imagemagick \
   && make \

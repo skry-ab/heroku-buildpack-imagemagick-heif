@@ -35,7 +35,7 @@ If you were to run a Heroku `bash` session you can investigate the dependencies:
 $ heroku run -a <appname> bash
 
 ~ $ convert -version
-Version: ImageMagick 7.1.0-22 Q16-HDRI x86_64 2022-01-29 https://imagemagick.org
+Version: ImageMagick 7.1.0-42 Q16-HDRI x86_64 2022-01-29 https://imagemagick.org
 Copyright: (C) 1999-2021 ImageMagick Studio LLC
 License: https://imagemagick.org/script/license.php
 Features: Cipher DPC HDRI OpenMP(4.5)

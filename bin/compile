@@ -6,14 +6,17 @@ set -e
 BUILD_DIR=$1
 CACHE_DIR=$2
 BUILDPACK_NAME=imagemagick
-BIN_DIR=$(cd "$(dirname "$0")"; pwd) # absolute path
+BIN_DIR=$(
+  cd "$(dirname "$0")"
+  pwd
+) # absolute path
 ROOT_DIR=$(dirname "$BIN_DIR")
 
 function indent() {
   c='s/^/       /'
   case $(uname) in
-    Darwin) sed -l "$c";;
-    *)      sed -u "$c";;
+  Darwin) sed -l "$c" ;;
+  *) sed -u "$c" ;;
   esac
 }
 
@@ -52,7 +55,9 @@ vendor "${ROOT_DIR}/build/imagemagick.tar.gz" "$BUILD_DIR/vendor/imagemagick"
 
 echo "Configuring build environment" | arrow
 
-cat <<EOF > export
+cat <<EOF >export
+export MAGICK_HOME="$BUILD_DIR/vendor/imagemagick"
+export MAGICK_CONFIGURE_PATH="/app/.magick"
 export PATH="/app/bin:$PATH:\$PATH"
 export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:$LD_LIBRARY_PATH"
 export LIBRARY_PATH="\$LIBRARY_PATH:$LIBRARY_PATH"
@@ -64,7 +69,9 @@ EOF
 echo "Building runtime environment" | arrow
 mkdir -p $BUILD_DIR/.profile.d
 
-cat <<EOF > $BUILD_DIR/.profile.d/$BUILDPACK_NAME.sh
+cat <<EOF >$BUILD_DIR/.profile.d/$BUILDPACK_NAME.sh
+export MAGICK_HOME="$BUILD_DIR/vendor/imagemagick"
+export MAGICK_CONFIGURE_PATH="/app/.magick"
 export PATH="/app/bin:${PATH//$BUILD_DIR//app}:\$PATH"
 export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:${LD_LIBRARY_PATH//$BUILD_DIR//app}"
 export LIBRARY_PATH="\$LIBRARY_PATH:${LIBRARY_PATH//$BUILD_DIR//app}"

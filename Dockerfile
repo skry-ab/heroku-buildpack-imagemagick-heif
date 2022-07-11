@@ -50,12 +50,12 @@ ENV LD_LIBRARY_PATH="/usr/src/imagemagick/lib:$LD_LIBRARY_PATH"
 # Remove libwebp from heroku image
 RUN ldconfig /usr/src/imagemagick/lib/
 
-# https://imagemagick.org/script/changelog.php
-ENV IMAGEMAGICK_VERSION=7.1.0-22
+# https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+ENV IMAGEMAGICK_VERSION=7.1.0.43
 
 RUN cd /usr/src/ \
-  && wget https://imagemagick.org/download/releases/ImageMagick-$IMAGEMAGICK_VERSION.tar.gz \
-  && tar xf ImageMagick-$IMAGEMAGICK_VERSION.tar.gz \
+  && wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/$IMAGEMAGICK_VERSION.tar.gz \
+  && tar xf $IMAGEMAGICK_VERSION.tar.gz \
   && cd ImageMagick-7* \
   && ./configure --with-heic=yes --with-webp=yes --prefix=/usr/src/imagemagick \
   && make \
@@ -72,5 +72,5 @@ RUN cd /usr/src/imagemagick \
   && rm -rf build \
   && mkdir build \
   && tar czf \
-  /usr/src/imagemagick/build/imagemagick.tar.gz bin include lib
+  /usr/src/imagemagick/build/imagemagick.tar.gz bin include lib etc share
 CMD ["tail", "-f", "/dev/null"]

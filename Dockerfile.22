@@ -1,4 +1,4 @@
-FROM heroku/heroku:20-build
+FROM heroku/heroku:22-build
 ARG DEBIAN_FRONTEND=noninteractive
 
 # See env vars below to update package versions
@@ -72,5 +72,5 @@ RUN cd /usr/src/imagemagick \
   && rm -rf build \
   && mkdir build \
   && tar czf \
-  /usr/src/imagemagick/build/imagemagick.tar.gz bin include lib etc share
+  /usr/src/imagemagick/build/imagemagick-heroku-22.tar.gz bin include lib etc share
 CMD ["tail", "-f", "/dev/null"]

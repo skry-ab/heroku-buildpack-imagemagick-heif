@@ -51,7 +51,14 @@ function vendor() {
 
 echo "Vendoring binaries" | arrow
 
-vendor "${ROOT_DIR}/build/imagemagick.tar.gz" "$BUILD_DIR/vendor/imagemagick"
+if [[ "$STACK" == "heroku-22" ]]; then
+  vendor "${ROOT_DIR}/build/imagemagick-heroku-22.tar.gz" "$BUILD_DIR/vendor/imagemagick"
+elif [[ "$STACK" == "heroku-20" ]]; then
+  vendor "${ROOT_DIR}/build/imagemagick-heroku-20.tar.gz" "$BUILD_DIR/vendor/imagemagick"
+else
+  echo "Unsupported stack: $STACK"
+  exit 1
+fi
 
 echo "Configuring build environment" | arrow
 

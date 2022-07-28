@@ -1,0 +1,15 @@
+{
+  "name": "imagemagick-version",
+  "description": "Shows the imagemagick version information inside Heroku dyno",
+  "image": "heroku/ruby",
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "https://github.com/drnic/heroku-buildpack-imagemagick-webp",
+      "branch": "heroku-22"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
-# Heroku buildpack for Imagemagick 7.1, webp, and heif
+# Heroku 20 + 22 buildpack for Imagemagick 7.1, webp, and heif
 
 This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for vendoring the ImageMagick with WebP and HEIF support binaries into your project.
 
-This one works with [Heroku stack](https://devcenter.heroku.com/articles/stack) `heroku-20`.
+This buildpack works with BOTH [Heroku stack](https://devcenter.heroku.com/articles/stack) `heroku-20` and `heroku-22`.
 
 ## Usage
 
@@ -24,6 +24,10 @@ And add it into your `app.json`:
     }
   ],
 ```
+
+## Sample apps and demonstration
+
+See folder `test/sample_app` for an example app and instructions for deploying it to `heroku-22` or `heroku-20` stacks.
 
 ## How it works?
 

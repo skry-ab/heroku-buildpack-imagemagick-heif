@@ -8,10 +8,6 @@ class App < Sinatra::Base
         <body>
           <h1>Imagemagick Version</h1>
           <pre>#{`convert --version`}</pre>
-          <h2>Heroku</h2>
-          <ul>
-            <li>Stack: #{ENV["STACK"] || "outside heroku"}</li>
-          </ul>
         </body>
       </html>
     HTML

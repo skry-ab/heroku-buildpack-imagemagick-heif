@@ -39,18 +39,18 @@ If you were to run a Heroku `bash` session you can investigate the dependencies:
 $ heroku run -a <appname> bash
 
 ~ $ convert -version
-Version: ImageMagick 7.1.0-42 Q16-HDRI x86_64 2022-01-29 https://imagemagick.org
-Copyright: (C) 1999-2021 ImageMagick Studio LLC
+Version: ImageMagick 7.1.1-30 Q16-HDRI x86_64 babe7ad2f:20240407 https://imagemagick.org
+Copyright: (C) 1999 ImageMagick Studio LLC
 License: https://imagemagick.org/script/license.php
 Features: Cipher DPC HDRI OpenMP(4.5)
-Delegates (built-in): bzlib djvu fontconfig freetype heic jbig jng jpeg lcms lqr lzma openexr png webp x xml zip zlib
-Compiler: gcc (9.3)
+Delegates (built-in): bzlib djvu fontconfig freetype heic jbig jng jp2 jpeg lcms lqr lzma openexr png tiff webp x xml zip zlib zstd
+Compiler: gcc (11.4)
 
 ~ $ dwebp -version
-1.2.2
+1.4.0
 
 ~ $ heif-info -h
- heif-info  libheif version: 1.12.0
+ heif-info  libheif version: 1.15.2
 ```
 
 ## Build script
@@ -61,7 +61,8 @@ To update the dependencies you have the following steps:
 2. Re-build the `build/imagemagick.tar.gz` file
 
     ```plain
-    ./build.sh
+    ./build.sh 22
+    ./build.sh 20
     ```
 
 3. Git the changes, including the tar.gz file, and push to your fork

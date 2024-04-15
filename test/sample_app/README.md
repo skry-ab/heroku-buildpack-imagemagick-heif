@@ -9,7 +9,7 @@ heroku apps:create $app -s $stack -r $stack
 heroku buildpacks:add -a $app -r $stack -i 1 "https://github.com/drnic/heroku-buildpack-imagemagick-webp#`git branch --show-current`"
 heroku buildpacks:add -a $app -r $stack -i 2 heroku/ruby
 git subtree push --prefix test/sample_app $stack master
-open https://$app.herokuapp.com/
+heroku open -a $app
 ```
 
 Clean up:
@@ -27,7 +27,7 @@ heroku apps:create $app -s $stack -r $stack
 heroku buildpacks:add -a $app -r $stack -i 1 "https://github.com/drnic/heroku-buildpack-imagemagick-webp#`git branch --show-current`"
 heroku buildpacks:add -a $app -r $stack -i 2 heroku/ruby
 git subtree push --prefix test/sample_app $stack master
-open https://$app.herokuapp.com/
+heroku open -a $app
 ```
 
 Clean up:

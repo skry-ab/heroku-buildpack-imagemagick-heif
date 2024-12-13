@@ -71,6 +71,7 @@ export LIBRARY_PATH="\$LIBRARY_PATH:$LIBRARY_PATH"
 export PKG_CONFIG_PATH="\$PKG_CONFIG_PATH:$PKG_CONFIG_PATH"
 export CPPPATH="\$CPPPATH:$CPPPATH"
 export CPATH="\$CPATH:$CPATH"
+export LIBHEIF_PLUGIN_PATH="$BUILD_DIR/vendor/imagemagick/lib/libheif"
 EOF
 
 echo "Building runtime environment" | arrow
@@ -85,4 +86,5 @@ export LIBRARY_PATH="\$LIBRARY_PATH:${LIBRARY_PATH//$BUILD_DIR//app}"
 export PKG_CONFIG_PATH="\$PKG_CONFIG_PATH:${PKG_CONFIG_PATH//$BUILD_DIR//app}"
 export CPPPATH="\$CPPPATH:${CPPPATH//$BUILD_DIR//app}"
 export CPATH="\$CPATH:${CPATH//$BUILD_DIR//app}"
+export LIBHEIF_PLUGIN_PATH="/app/vendor/imagemagick/lib/libheif"
 EOF
